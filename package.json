@@ -1,0 +1,45 @@
+{
+  "name": "techpotato",
+  "version": "1.0.0",
+  "description": "TechPotato to make your job hunting easier ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lijun21/TechPotato.git"
+  },
+  "keywords": [
+    "node",
+    "mongoDB",
+    "express"
+  ],
+  "author": "Lijun Wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lijun21/TechPotato/issues"
+  },
+  "homepage": "https://github.com/Lijun21/TechPotato#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "express-session": "^1.15.6",
+    "locus": "^2.0.1",
+    "method-override": "^2.3.10",
+    "moment": "^2.21.0",
+    "mongoose": "^5.0.6",
+    "morgan": "^1.9.0",
+    "nodemailer": "^4.6.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.2.1",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.5.0"
+  }
+}
