@@ -25,7 +25,8 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index");
     userRoutes       = require("./routes/user");
 
-mongoose.connect("mongodb://localhost/yelp_camp");
+// mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://lijun:Wang@ds241039.mlab.com:41039/tech_potato");
 var app = express();
 
 // app.set('port', process.env.PORT || 8000);
