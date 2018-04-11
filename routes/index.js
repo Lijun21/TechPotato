@@ -9,9 +9,9 @@ var nodemailer = require('nodemailer');
 
 // app.use("/", indexRoutes);
 
-
+//Landing page redirct to project page
 router.get("/", function(req, res){
-    res.render("landing");
+    res.redirect("/projects");
 });
 
 // SHOW register form
@@ -34,7 +34,7 @@ router.post("/register", function(req, res){
         }
         passport.authenticate("local")(req, res, function(){
            req.flash("success", "Welcome to our site " + user.username);
-           res.redirect("/potatos"); 
+           res.redirect("/projects"); 
         });
     });
 });
@@ -47,10 +47,10 @@ router.post("/register", function(req, res){
  // POSE login logic
  router.post("/login", passport.authenticate("local", 
      {
-         successRedirect: "/potatos",
+         successRedirect: "/projects",
          failureRedirect: "/login",
          failureFlash: true,
-         successFlash: 'Welcome to join tech potato!'
+         successFlash: 'Welcome to join tech project!'
      }), function(req, res){
  });
  
@@ -58,7 +58,7 @@ router.post("/register", function(req, res){
  router.get("/logout", function(req, res){
     req.logout();
     req.flash("success", "Logged you out!");
-    res.redirect("/potatos");
+    res.redirect("/projects");
  });
 
  
@@ -81,11 +81,13 @@ router.post("/register", function(req, res){
          }
          passport.authenticate("local")(req, res, function(){
             req.flash("success", "Welcome Admin " + user.username);
-            res.redirect("/potatos"); 
+            res.redirect("/projects"); 
          });
      });
  });
 
+
+//====RESET PASSWORD ROUTES =======================================
 router.get('/forgot', function(req, res) {
     res.render('forgot');
 });
@@ -118,13 +120,13 @@ router.post('/forgot', function(req, res, next) {
           port: 465,
           secure: true,
           auth: {
-              user: 'tpotato2018@gmail.com',
-              pass: '2018@Tpotato'
+              user: 'tproject2018@gmail.com',
+              pass: '2018@Tproject'
           }
       });
         var mailOptions = {
           to: user.email,
-          from: '🤑 tpotato2018@gmail.com',
+          from: '🤑 tproject2018@gmail.com',
           subject: 'Node.js Password Reset',
           text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
             'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -185,8 +187,8 @@ router.post('/reset/:token', function(req, res) {
           port: 465,
           secure: true,
           auth: {
-              user: 'tpotato2018@gmail.com',
-              pass: '2018@Tpotato'
+              user: 'tproject2018@gmail.com',
+              pass: '2018@Tproject'
           }
       });
         var mailOptions = {

@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var potato = require("./models/potato");
+var project = require("./models/project");
 var Comment   = require("./models/comment");
 
 var data = [
@@ -21,19 +21,19 @@ var data = [
 ]
 
 function seedDB(){
-   //Remove all potatos
-   potato.remove({}, function(err){
+   //Remove all projects
+   project.remove({}, function(err){
         if(err){
             console.log(err);
         }
-        console.log("removed potatos!");
-         //add a few potatos
+        console.log("removed projects!");
+         //add a few projects
         data.forEach(function(seed){
-            potato.create(seed, function(err, potato){
+            project.create(seed, function(err, project){
                 if(err){
                     console.log(err)
                 } else {
-                    console.log("added a potato");
+                    console.log("added a project");
                     //create a comment
                     // Comment.create(
                     //     {
@@ -43,8 +43,8 @@ function seedDB(){
                     //         if(err){
                     //             console.log(err);
                     //         } else {
-                    //             potato.comments.push(comment);
-                    //             potato.save();
+                    //             project.comments.push(comment);
+                    //             project.save();
                     //             console.log("Created new comment");
                     //         }
                     //     });

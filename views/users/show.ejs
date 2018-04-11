@@ -2,18 +2,22 @@
 
 <div class="row">
 	<div class="col-md-4">
-			<h1><%= user.username %></h1>
+			<h1><%= user.username %>'s Profile</h1>
 		<div class="thumbnail">
 			<img src="<%= user.avatar %>" alt="user profile image">
 			<div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
 		</div>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quasi similique architecto ad modi sunt quaerat possimus, officiis quos. Voluptatibus repellendus exercitationem, id saepe sunt consectetur non quam sapiente assumenda.
-
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quasi similique architecto ad modi sunt quaerat possimus, officiis quos. Voluptatibus repellendus exercitationem, id saepe sunt consectetur non quam sapiente assumenda.
+		Lijun like to build things and eat lots kinds of fruits.
+		Lijun doesn't like to drink soda and coffee.
+		<p>She is a vegetarian and she also loves steaks! Lol </p>
 	</div>
 	<div class="col-md-8">
-		<h3><%= user.username %>'s potatos:</h3>
-        coming soon..
+		<div>
+			<div><%= user.username %>'s projects:</div>
+		<% projectPosts.forEach(function(submitions, index, array){ %>
+			<h4><%= index + 1 %>: <%=submitions.name %> with <%=submitions.comments.length%> comments</h4>
+		<% }) %> 
+		</div>
 	</div>
 </div>
 

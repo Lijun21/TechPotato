@@ -1,7 +1,6 @@
-var User    = require("./models/user"),
-    seedDB  = require("./seeds");
-
+//====DEPENDENCIES =========================================
 var express         = require("express"),
+    app             = express(),
     path            = require('path'),
     favicon         = require('serve-favicon'),
     mongoose        = require("mongoose"),
@@ -11,31 +10,33 @@ var express         = require("express"),
     LocalStrategy   = require("passport-local"),
     session         = require("express-session"),
     bodyParser      = require("body-parser"),
-    methodOverride  = require("method-override");
+    methodOverride  = require("method-override"),
+    cookieParser    = require('cookie-parser');
 
-    var cookieParser = require('cookie-parser');
-    var nodemailer = require('nodemailer');
-    var bcrypt = require('bcrypt-nodejs');
-    var async = require('async');
-    var crypto = require('crypto');
+var User    = require("./models/user"),
+    seedDB  = require("./seeds");
 
-//Requring Routes
+//====ROUTES====================================================
 var commentRoutes    = require("./routes/comments"),
-    potatoRoutes = require("./routes/potatos"),
-    indexRoutes      = require("./routes/index");
+    projectRoutes     = require("./routes/projects"),
+    indexRoutes      = require("./routes/index"),
     userRoutes       = require("./routes/user");
 
-// mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb://lijun:Wang@ds241039.mlab.com:41039/tech_potato");
-var app = express();
+//====SERVE FAVICON================================================
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
-// app.set('port', process.env.PORT || 8000);
+
+//====MONGOOOSE AND MONGOD==========================================  
+mongoose.connect("mongodb://localhost/tech_project");
+// mongoose.connect("mongodb://lijun:Wang@ds241039.mlab.com:41039/tech_project");
+
+
+//====EXPRESS SET PORT,TEMPLATE ENGINE,VIEW DIR,PUBLIC DIR ETC====
+app.set('port', process.env.PORT || 8000);
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
 app.set('views', path.join(__dirname, 'views'));
-//why favion doesn't show up in the browser???? ...
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-// app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(express.static(__dirname + "/public"));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
@@ -44,7 +45,7 @@ app.use(flash());
 app.locals.moment = moment;
 // seedDB();
 
-// PASSPORT CONFIGURATION
+//====CONFIGURATION OF EXPRESS AND PASSPORT========================
 app.use(session({
     secret: "hum, i don't like dog!",
     resave: false,
@@ -57,7 +58,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//Pass currentUser info to all routes and flash messages
+//====PASS DATA TO ROUTES========================================
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
@@ -65,14 +66,15 @@ app.use(function(req, res, next){
     next();
  });
 
-//Make routes short in moudules
+//====ROUTING=====================================================
 app.use("/", indexRoutes);
-app.use("/potatos", potatoRoutes);
-app.use("/potatos/:id/comments", commentRoutes);
+app.use("/projects", projectRoutes);
+app.use("/projects/:id/comments", commentRoutes);
 app.use("/", userRoutes);
 
 
-app.listen(8000, function(){
+//====LISTEN TO THE SERVER =======================================
+app.listen(app.get('port'), function(){
     console.log("this is yelp has started on 8000");
 })
 

@@ -21,11 +21,8 @@ var projectSchema = new mongoose.Schema({
     ],
     upvote: [
         {
-            id: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "User"
-            },
-            upvoter: String
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Vote"
         }
     ]
 });

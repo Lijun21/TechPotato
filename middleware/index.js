@@ -1,11 +1,11 @@
-var potatoDB = require("../models/potato");
+var projectDB = require("../models/project");
 var Comment = require("../models/comment");
 
 //all the middleware gose here
-var potatoMiddleware = {};
+var projectMiddleware = {};
 
 //middleware function 
-potatoMiddleware.isLoggedIn = function(req, res, next){
+projectMiddleware.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
@@ -13,17 +13,17 @@ potatoMiddleware.isLoggedIn = function(req, res, next){
     res.redirect("/login");
 };
 
-potatoMiddleware.checkpotatoOwnership = function(req, res, next){
+projectMiddleware.checkprojectOwnership = function(req, res, next){
     //if the user is logged in?
     if (req.isAuthenticated()){
-        potatoDB.findById(req.params.id, function(err, foundpotato){
-            if (err || !foundpotato){
+        projectDB.findById(req.params.id, function(err, foundproject){
+            if (err || !foundproject){
                 console.log(err);
-                req.flash("error", "potato not found");
+                req.flash("error", "project not found");
                 res.redirect("back");
             } else {
-                //if the user is the owner of the potato
-                if (foundpotato.author.id.equals(req.user._id) || req.user.isAdmin){
+                //if the user is the owner of the project
+                if (foundproject.author.id.equals(req.user._id) || req.user.isAdmin){
                     next();
                 } else {
                     req.flash("error", "You need to be logged in to do that");
@@ -37,11 +37,11 @@ potatoMiddleware.checkpotatoOwnership = function(req, res, next){
     }
 }
 
-potatoMiddleware.checkCommentOwnership = function(req, res, next){
+projectMiddleware.checkCommentOwnership = function(req, res, next){
     //is the user login in?
     if (req.isAuthenticated()){
-        potatoDB.findById(req.params.id, function(err, foundpotato){
-            if (err || !foundpotato){
+        projectDB.findById(req.params.id, function(err, foundproject){
+            if (err || !foundproject){
                 console.log(err);
                 res.redirect("back");
             } else {
@@ -62,4 +62,4 @@ potatoMiddleware.checkCommentOwnership = function(req, res, next){
     }
 }
 
-module.exports = potatoMiddleware;
+module.exports = projectMiddleware;

@@ -4,7 +4,6 @@
         <title>SideProjects</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="/stylesheets/main.css">
-        <!-- Make site responsive on mobile/tablet -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
@@ -18,11 +17,11 @@
                     <span class="icon-bar"></span>
                 </button>
     
-                <a class="navbar-brand" href="/">NAME</a>
+                <a class="navbar-brand" href="/">Potato</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                <li class="<%= typeof page !== 'undefined' && page === 'potatos' ? 'active' : '' %>"><a href="/potatos">SideProject</a></li>
+                <li class="<%= typeof page !== 'undefined' && page === 'projects' ? 'active' : '' %>"><a href="/projects">SideProject</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <% if(!currentUser){ %>

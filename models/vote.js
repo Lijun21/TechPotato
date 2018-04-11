@@ -8,4 +8,4 @@ var voteSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("vote", voteSchema);
+module.exports = mongoose.model("Vote", voteSchema);

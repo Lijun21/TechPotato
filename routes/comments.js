@@ -1,32 +1,32 @@
 var express = require("express");
 var router  = express.Router({mergeParams: true});
-var PotatoDB = require("../models/potato");
+var ProjectDB = require("../models/project");
 var Comment = require("../models/comment");
 var Middleware = require("../middleware");
 
-// app.use("/potatos/:id/comments", commentRoutes);
+// app.use("/projects/:id/comments", commentRoutes);
 
 //Show new comment form to create new comment
 router.get("/new", Middleware.isLoggedIn, function(req, res){
-    // find potato by id
-    PotatoDB.findById(req.params.id, function(err, potato){
+    // find project by id
+    ProjectDB.findById(req.params.id, function(err, project){
         if(err){
             req.flash("error", "Ops.. Can't find the data :(");
             console.log(err);
         } else {
-             res.render("comments/new", {potato: potato});
+             res.render("comments/new", {project: project});
         }
     })
 });
 
 //CREATE - create new comment to DB
 router.post("/", Middleware.isLoggedIn, function(req, res){
-   //lookup potato using ID
-   PotatoDB.findById(req.params.id, function(err, potato){
+   //lookup project using ID
+   ProjectDB.findById(req.params.id, function(err, project){
        if(err){
            req.flash("error", "Ops.. Can't find the data :(");
            console.log(err);
-           res.redirect("/potatos");
+           res.redirect("/projects");
        } else {
            //create new comment
             Comment.create(req.body.comment, function(err, comment){
@@ -37,49 +37,49 @@ router.post("/", Middleware.isLoggedIn, function(req, res){
                     comment.author.id = req.user._id;
                     comment.author.username = req.user.username;
                     comment.save();
-                    //connect new comment to potato
-                    potato.comments.push(comment);
-                    potato.save();
-                    //redirect potato show page
+                    //connect new comment to project
+                    project.comments.push(comment);
+                    project.save();
+                    //redirect project show page
                     req.flash("success", "You comment has been added");
-                    return res.redirect('/potatos/' + potato._id);
+                    return res.redirect('/projects/' + project._id);
                 }
         });
        }
    });
 });
 
-// app.use("/potatos/:id/comments", commentRoutes);
+// app.use("/projects/:id/comments", commentRoutes);
 
 //Edit - show comment edit form 
 router.get("/:comment_id/edit", Middleware.checkCommentOwnership, function(req, res){
-    PotatoDB.findById(req.params.id, function(err, foundpotato){
+    ProjectDB.findById(req.params.id, function(err, foundproject){
         if (err){
             req.flash("error", "Ops.. Can't find the data :(");
             console.log(err);
         } else {
             Comment.findById(req.params.comment_id, function(err, foundComment){
-                res.render("comments/edit", {comment: foundComment, potato : foundpotato});
+                res.render("comments/edit", {comment: foundComment, project : foundproject});
             });
         }
     })
 });
 
 
-//UPDATE - update the comment in potato
+//UPDATE - update the comment in project
 router.put("/:comment_id", Middleware.checkCommentOwnership, function(req, res){
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, comment){
         if (err){
             req.flash("error", "Ops.. Can't find the data :(");
             console.log(err);
         } else {
-            res.redirect("/potatos/" + req.params.id);
+            res.redirect("/projects/" + req.params.id);
         }
     });
 });
 
 
-//DESTROY - delete the Comment inside certain potato 
+//DESTROY - delete the Comment inside certain project 
 router.delete("/:comment_id", Middleware.checkCommentOwnership, function(req, res){
     Comment.findByIdAndRemove(req.params.comment_id, function(err){
         if (err){
@@ -87,7 +87,7 @@ router.delete("/:comment_id", Middleware.checkCommentOwnership, function(req, re
             console.log(err);
         } else {
             req.flash("success", "You comment has been deleted");
-            res.redirect("/potatos/" + req.params.id);
+            res.redirect("/projects/" + req.params.id);
         }
     });
 });
