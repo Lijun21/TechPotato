@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <!-- header here work same as div -->
+    <header class ="jumbotron">
+        <div class ="container">
+            <h1>Welcome to SideProjects</h1>
+            <p>View our top voting projects from 42!</p>
+            <p>
+                <a class = "btn btn-primary btn-large" href="/projects/new">Add New project</a>
+            </p>
+        </div>
+    </header>
+
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <% projects.forEach(function(project){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src = "<%= project.image %>">
+                    <div>
+                        <h4><%= project.name %></h4>
+                    </div>
+                    <p>
+                        <a href="/projects/<%= project._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>        
+</div>
+
+
+<% include ../partials/footer %>
