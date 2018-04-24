@@ -1,7 +1,7 @@
 # TechPotato
 nodejs, express, mongoDB
 
-# tPotato
+# www.tPotato.com
 
 ## Implementation
 
@@ -31,8 +31,13 @@ npm start
 
 The stack is composed of:
 - ejs
-- express
-- nodejs
+- Express
+- Nodejs
 - MongoDB
 
 ## Improvment in the future
+Current stack is for pre-production, future improvment would be:
+- React/Redux
+- Express
+- Nodejs
+- Postgres
