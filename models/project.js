@@ -27,5 +27,4 @@ var projectSchema = new mongoose.Schema({
     ]
 });
 
-//make a moudle that use the schema above that have bunch of methods on it
-module.exports = mongoose.model("Campground123", projectSchema);
+module.exports = mongoose.model("Project", projectSchema);

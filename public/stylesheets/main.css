@@ -31,3 +31,22 @@ body {
 #forgot{
     color: grey;
 }
+
+.project_description{
+    /* text-decoration: underline; */
+    /* text-decoration: line-through; */
+    /* text-transform: uppercase;
+    text-transform: lowercase; */
+    /* line-height: 20px;
+    font-style: italic;
+    font-weight: bold; */
+    /* font-size: 80%; */
+    /* use google font can slow the page loading but this way differnt computer might see differet font */
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    /* text-align: center; */
+}
+/* 
+footer{
+    border-top: 1px solid black;
+    text-align: center;
+} */

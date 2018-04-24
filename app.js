@@ -27,8 +27,11 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 
 //====MONGOOOSE AND MONGOD==========================================  
-mongoose.connect("mongodb://localhost/tech_project");
-// mongoose.connect("mongodb://lijun:Wang@ds241039.mlab.com:41039/tech_project");
+// for production
+// var mongoDbServer =  process.env.MONGODBSERVER;
+// for development
+var mongoDbServer = "mongodb://localhost/tech_project";
+mongoose.connect(mongoDbServer);
 
 
 //====EXPRESS SET PORT,TEMPLATE ENGINE,VIEW DIR,PUBLIC DIR ETC====

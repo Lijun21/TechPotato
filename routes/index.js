@@ -120,8 +120,8 @@ router.post('/forgot', function(req, res, next) {
           port: 465,
           secure: true,
           auth: {
-              user: 'tproject2018@gmail.com',
-              pass: '2018@Tproject'
+              user: process.env.GMAIL,
+              pass: process.env.PASSWORD
           }
       });
         var mailOptions = {
@@ -146,7 +146,6 @@ router.post('/forgot', function(req, res, next) {
   });
 
 router.get('/reset/:token', function(req, res) {
-    console.log(req.params.token);
     User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
         if (!user) {
         req.flash('error', 'Password reset token is invalid or has expired.');
@@ -187,8 +186,8 @@ router.post('/reset/:token', function(req, res) {
           port: 465,
           secure: true,
           auth: {
-              user: 'tproject2018@gmail.com',
-              pass: '2018@Tproject'
+              user: process.env.GMAIL,
+              pass: process.env.PASSWORD
           }
       });
         var mailOptions = {

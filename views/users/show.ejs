@@ -7,15 +7,18 @@
 			<img src="<%= user.avatar %>" alt="user profile image">
 			<div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
 		</div>
-		Lijun like to build things and eat lots kinds of fruits.
-		Lijun doesn't like to drink soda and coffee.
-		<p>She is a vegetarian and she also loves steaks! Lol </p>
-	</div>
+		<p>Lijun like to build things and eat lots kinds of fruits.
+			Lijun doesn't like to drink soda and coffee.
+			She is a vegetarian and she also loves steaks! Lol
+		</p>
+		</div>
 	<div class="col-md-8">
 		<div>
 			<div><%= user.username %>'s projects:</div>
 		<% projectPosts.forEach(function(submitions, index, array){ %>
-			<h4><%= index + 1 %>: <%=submitions.name %> with <%=submitions.comments.length%> comments</h4>
+			<ul>
+				<li><%= index + 1 %>: <%=submitions.name %> --- <%=submitions.comments.length%> comments</li>
+			</ul>
 		<% }) %> 
 		</div>
 	</div>
