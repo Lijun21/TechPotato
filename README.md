@@ -1,7 +1,7 @@
 # TechPotato
 nodejs, express, mongoDB
 
-# tpotato.com
+# http://tpotato.com
 
 ## Implementation
 
