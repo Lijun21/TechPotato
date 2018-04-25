@@ -1,7 +1,7 @@
 # TechPotato
 nodejs, express, mongoDB
 
-# www.tPotato.com
+# tpotato.com
 
 ## Implementation
 
@@ -24,7 +24,7 @@ npm install
 start the server
 
 ```
-npm start
+node app.js
 ```
 
 ## Overview
@@ -40,4 +40,4 @@ Current stack is for pre-production, future improvment would be:
 - React/Redux
 - Express
 - Nodejs
-- Postgres
+- Postgres or Firebase
