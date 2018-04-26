@@ -29,6 +29,7 @@ router.post("/", Middleware.isLoggedIn, function(req, res){
            res.redirect("/projects");
        } else {
            //create new comment
+        //    eval(require('locus'));
             Comment.create(req.body.comment, function(err, comment){
                 if(err){
                     req.flash("error", "Ops.. Can't find the data :(");

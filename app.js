@@ -18,9 +18,10 @@ var User    = require("./models/user"),
 
 //====ROUTES====================================================
 var commentRoutes    = require("./routes/comments"),
-    projectRoutes     = require("./routes/projects"),
+    projectRoutes    = require("./routes/projects"),
     indexRoutes      = require("./routes/index"),
     userRoutes       = require("./routes/user");
+    voteRoutes       = require("./routes/upvote");
 
 //====SERVE FAVICON================================================
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
@@ -74,6 +75,7 @@ app.use("/", indexRoutes);
 app.use("/projects", projectRoutes);
 app.use("/projects/:id/comments", commentRoutes);
 app.use("/", userRoutes);
+app.use("/", voteRoutes);
 
 
 //====LISTEN TO THE SERVER =======================================

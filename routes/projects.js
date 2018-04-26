@@ -7,14 +7,26 @@ var Middleware = require("../middleware");
 
 //Index - show all projects
 router.get("/", function(req, res){
-    //get all project from DB
-    ProjectDB.find({}, function(err, allproject){
-        if (err){
-            console.log(err);
-        }else{
-            res.render("projects/index", {projects:allproject, page: 'projects'});
-        }
-    });
+    var search = req.query.search;
+    if (search){
+        // eval(require('locus'));
+        ProjectDB.find({name: search}, function(err, Findproject){
+            if(err){
+                console.log(err);
+                res.render("projects/index", {projects:{}, page: 'projects'});
+            }else{
+                res.render("projects/index", {projects:Findproject, page: 'projects'});
+            }
+        })
+    }else{
+        ProjectDB.find({}, function(err, allproject){
+            if (err){
+                console.log(err);
+            }else{
+                res.render("projects/index", {projects:allproject, page: 'projects'});
+            }
+        });
+    }
 });
 
 //GET/New - show from to create new project
@@ -44,6 +56,9 @@ router.post("/", Middleware.isLoggedIn, function(req, res){
 
 //GET/SHOW - shows more info about one project
 router.get("/:id", function(req, res){
+    // if(req.query.upvotePuls1){
+    //     eval(require("locus"));
+    // }
     ProjectDB.findById(req.params.id).populate("comments").exec(function(err, foundproject){
         if (err){
             console.log(err);

@@ -4,20 +4,20 @@
         <div class="col-md-3">
             <p class="lead">Side Project</p>
             <div class="list-group">
-                <li class="list-group-item active">Info 1</li>
-                <li class="list-group-item">Info 2</li>
-                <li class="list-group-item">Info 3</li>
+                <li class="list-group-item active">Project Info</li>
+                <li class="list-group-item"><a href="/users/<%= project.author.id%>" >About Author</a></li>
+                <li class="list-group-item"><a href="#comments">Comments</a></li>
             </div>
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
                 <img class="img-responsive" id="project_img" src="<%= project.image %>">
                 <div class="caption-full">
-                    <h4>
-                        <form class="pull-right">
-                                <button class="btn btn-xs btn-success" id="UpVote"> UpVote </button>
-                        </form> 
-                    </h4>
+                    <h3 class="pull-right">
+                        <form action="/projects/<%= project._id%>/vote" method="post"> 
+                            <button class="btn btn-xs btn-success" id="UpVote"> UpVote <%=project.upvote.length %></button>
+                        </form>
+                    </h3>
                     <h4><a><%=project.name%></a></h4>
                     <p class="project_description"><%= project.description %></p>
                     <p>
@@ -47,6 +47,7 @@
                             <p>
                                 <%= comment.text %> 
                             </p>
+                            <a name="comments"></a>
                             <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
                             <a href = "/projects/<%= project._id %>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">Edit</a>
                             <form id="comment-delete-form" action="/projects/<%= project._id %>/comments/<%=comment._id%>?_method=DELETE" method="POST">
@@ -61,4 +62,13 @@
     </div>
 </div>
 
+<!-- <script>
+    document.getElementById("UpVote").addEventListener("click", upvote);
+    function upvote(){ 
+        document.getElementById("UpVote").innerHTML="You just Upvoted"   
+    }
+</script> -->
+
 <% include ../partials/footer %>
+
+

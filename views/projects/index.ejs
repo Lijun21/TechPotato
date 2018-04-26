@@ -8,16 +8,27 @@
             <p>
                 <a class = "btn btn-primary btn-large" href="/projects/new">Add New project</a>
             </p>
+            <p>
+                <form action="/projects" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Project search..." class="form-control">
+                        <input type="submit" value="Search" class="btn btn-default">
+                    </div>
+                </form>
+            </p>
         </div>
     </header>
 
     <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <% projects.sort(function (a, b){ %>
+        <%   return a.upvote.length - b.upvote.length; %>
+        <% })%>
         <% projects.forEach(function(project){ %>
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
                     <img src = "<%= project.image %>">
                     <div>
-                        <h4><%= project.name %></h4>
+                        <h4><%= project.name %></h4><br>
                     </div>
                     <p>
                         <a href="/projects/<%= project._id %>" class="btn btn-primary">More Info</a>

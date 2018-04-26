@@ -32,7 +32,7 @@ body {
     color: grey;
 }
 
-.project_description{
+/* .project_description{ */
     /* text-decoration: underline; */
     /* text-decoration: line-through; */
     /* text-transform: uppercase;
@@ -44,7 +44,7 @@ body {
     /* use google font can slow the page loading but this way differnt computer might see differet font */
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
     /* text-align: center; */
-}
+/* } */
 /* 
 footer{
     border-top: 1px solid black;
