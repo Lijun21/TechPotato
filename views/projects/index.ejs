@@ -20,15 +20,16 @@
     </header>
 
     <div class="row text-center" style="display:flex; flex-wrap:wrap;">
-        <% projects.sort(function (a, b){ %>
-        <%   return a.upvote.length - b.upvote.length; %>
+        <% projects.sort(function (a, b){  %>
+        <%   return b.upvote.length - a.upvote.length; %>
         <% })%>
         <% projects.forEach(function(project){ %>
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
                     <img src = "<%= project.image %>">
                     <div>
-                        <h4><%= project.name %></h4><br>
+                        <h4><%= project.name %></h4>
+                        <p>votes: <%= project.upvote.length%></p>
                     </div>
                     <p>
                         <a href="/projects/<%= project._id %>" class="btn btn-primary">More Info</a>

@@ -14,8 +14,8 @@
                 <img class="img-responsive" id="project_img" src="<%= project.image %>">
                 <div class="caption-full">
                     <h3 class="pull-right">
-                        <form action="/projects/<%= project._id%>/vote" method="post"> 
-                            <button class="btn btn-xs btn-success" id="UpVote"> UpVote <%=project.upvote.length %></button>
+                        <form action="/projects/<%= project._id%>/vote" method="post">
+                            <button class="btn btn-xs btn-success" id="UpVote" name="<%=currentUser %>"> UpVote <%=project.upvote.length %></button>
                         </form>
                     </h3>
                     <h4><a><%=project.name%></a></h4>
