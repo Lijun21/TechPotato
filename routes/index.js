@@ -27,7 +27,6 @@ router.post("/register", function(req, res){
     });
     //model.passport-local-mongoose methods to crypto password and username.
     User.register(newUser, req.body.password, function(err, user){
-      // eval(require('locus'));
         if(err){
             console.log(err.message);
             return res.render("register", {error: "Please use other username or email"});
@@ -206,5 +205,11 @@ router.post('/reset/:token', function(req, res) {
       res.redirect('/');
     });
   });
+
+//   function getUsername(target){
+//     var index = target.indexOf('@');
+//     var result = target.slice(0, index);
+//     return (result);
+// }
 
  module.exports = router;
