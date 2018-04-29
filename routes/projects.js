@@ -56,9 +56,6 @@ router.post("/", Middleware.isLoggedIn, function(req, res){
 
 //GET/SHOW - shows more info about one project
 router.get("/:id", function(req, res){
-    // if(req.query.upvotePuls1){
-    //     eval(require("locus"));
-    // }
     ProjectDB.findById(req.params.id).populate("comments").exec(function(err, foundproject){
         if (err){
             console.log(err);
