@@ -3,12 +3,53 @@
     <head>
         <title>SideProjects</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         <link rel="stylesheet" href="/stylesheets/main.css">
     </head>
     <body>
-    <nav class="navbar navbar-default">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="/">Potato</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-1 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/projects">SideProject <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ask</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Job</a>
+                    </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <% if(!currentUser){ %>
+                            <li class="nav-item" active><a class="nav-link" href="/login">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/register">SignUp</a></li>
+                        <% } else { %>
+                            <li class="nav-item" active><a class="nav-link" href="#">Signed In As <%= currentUser.username %></a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                        <% } %>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+    <!-- <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -35,7 +76,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <div class="container">
         

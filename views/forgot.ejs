@@ -1,13 +1,9 @@
 <% include partials/header %>
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <h1 style="text-align: center">Forgot Password :(</h1>
         <div style="width: 30%; margin: 25px auto;">
             <form action="/forgot" method="POST">
-                <!-- <div class="form-group">
-                    <label>Username: </label>
-                    <input class="form-control" type="text" name="username" placeholder="name">
-                </div> -->
                 <div class="form-group">
                     <label>Email Address: </label>
                     <input class="form-control" type="email" name="email" placeholder="email">
@@ -18,5 +14,40 @@
             </form>
         </div>
     </div>
+</div> -->
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-5">Forgot Password</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card border-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0 my-2">Restset</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form" autocomplete="off" action="/forgot" method="POST">
+                                <div class="form-group">
+                                    <label for="inputEmail">Email</label>
+                                    <input class="form-control" type="text" name="email" id="inputEmail" placeholder="email">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-lg float-right">Reset Password</button>
+                                </div>
+                                <div>
+                                    <a href="/projects">Go Back</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <% include partials/footer %>
+
+
+

@@ -39,6 +39,7 @@ mongoose.connect(mongoDbServer);
 app.set('port', process.env.PORT || 8000);
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
+//====SET Dir<link rel="stylesheet" href="/stylesheets/main.css">=====
 app.use(express.static(__dirname + "/public"));
 
 app.use(bodyParser.json());
