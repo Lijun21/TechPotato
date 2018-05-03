@@ -3,6 +3,8 @@ var mongoose = require("mongoose");
 //SCHEMA SETUP
 var projectSchema = new mongoose.Schema({
     name: String,
+    link: String,
+    techUsed: String,
     image: String,
     description: String,
     createdAt: { type: Date, default: Date.now},

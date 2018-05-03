@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<div class="container">
+<div class="container py-3">
     <header class ="jumbotron">
         <div class ="container">
             <h1>Welcome to Side Project</h1>
@@ -8,14 +8,6 @@
             <p>
                 <a class = "btn btn-primary btn-large" href="/projects/new">Add New project</a>
             </p>
-            <!-- <p>
-                <form action="/projects" method="GET" class="form-inline">
-                    <div class="form-group">
-                        <input type="text" name="search" placeholder="Project search..." class="form-control">
-                        <input type="submit" value="Search" class="btn btn-default">
-                    </div>
-                </form>
-            </p> -->
         </div>
     </header>
 
@@ -25,7 +17,7 @@
         <% })%>
         <% projects.forEach(function(project){ %>
             <div class="col-md-4 col-sm-6">
-                <div class="thumbnail">
+                <div class="thumbnail ">
                     <img src = "<%= project.image %>">
                     <div>
                         <h4><%= project.name %></h4>

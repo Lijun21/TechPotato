@@ -1,26 +1,45 @@
 <% include ../partials/header %>
 
-<div class="container">
+<div class="container py-5">
     <div class="row">
-        <h1 style="text-align: center">Create a new projects</h1>
-        <div style="width: 30%; margin: 30px auto;">
-            <form action="/projects" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name = "name" placeholder="name">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name = "image" placeholder="image url">
-                </div>
-                <div class="form-group">
-                        <input class="form-control" type="text" name = "description" placeholder="description">
+        <div class="col-md-12">
+            <h2 class="text-center mb-5">Post new Project</h2>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card border-secondary">
+                        <div class="card-body">
+                            <form class="form" role="form" autocomplete="off" action="/projects" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="ProjectName">Project Name</label>
+                                    <input type="text" class="form-control" id="ProjectName" name = "project[name]" placeholder="name of the project">
+                                </div>
+                                <div class="form-group">
+                                    <label for="link">Link</label>
+                                    <input type="text" class="form-control" id="link" name="project[link]" placeholder="Past a URL(e.g. https://tpotago.com)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="TechUsedSelect">Technologies Used</label>
+                                    <input type="text" class="form-control" id="TechUsedSelect" name= "project[techUsed]" placeholder="Python, Javascript, Rudy...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Imgae">Image</label>
+                                    <input type="file" class="form-control-file" id="Imgae" name = "project[image]" accept="image/*" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Description</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" name = "description" rows="5"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-lg float-right">Submit!</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
                 </div>
-            </form>
-            <a href="/projects">Go Back</a>
+            </div>
         </div>
     </div>
 </div>
+
 
 <% include ../partials/footer %>
