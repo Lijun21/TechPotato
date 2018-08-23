@@ -1,3 +1,13 @@
+var test = {
+    a: 1,
+    b: 2,
+    c: 3
+}
+
+console.log(test);
+
+
+
 var mongoose = require("mongoose");
 var project = require("./models/project");
 var Comment   = require("./models/comment");
